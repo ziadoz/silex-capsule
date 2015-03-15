@@ -200,7 +200,7 @@ class BookObserver
     }
 }
 
-Book:observer(new BookObserver());
+Book:observe(new BookObserver());
 ````
 
 ## Capsule Options Example
