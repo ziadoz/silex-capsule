@@ -290,6 +290,6 @@ $app->register(new Ziadoz\Silex\Provider\CapsuleServiceProvider, [
 
 ## Testing
 
-There are some basic tests to ensure that the Capsule object is correctly registered with Silex. You can run them using the [PHPUnit](https://phpunit.de/), but you'll also need SQLite as the tests use a simple in-memory database. 
+There are some basic tests to ensure that the Capsule object is correctly registered with Silex. You can run them using [PHPUnit](https://phpunit.de/), and you'll also need SQLite as the tests use a simple in-memory database. 
 
 If you make a pull request please ensure you add the accompanying tests.
