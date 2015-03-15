@@ -1,0 +1,28 @@
+{
+    "name": "ziadoz/silex-capsule",
+    "description": "A Silex service provider for using Laravel's Eloquent ORM standlone",
+    "support": {
+        "issues": "https://github.com/ziadoz/silex-capsule/issues",
+        "source": "https://github.com/ziadoz/silex-capsule"
+    },
+    "keywords": ["laravel", "database", "sql", "orm", "capsule", "silex", "service provider"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jamie York",
+            "email": "ziadoz@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "silex/silex": "~1.2",
+        "illuminate/database": "5.0",
+        "illuminate/events": "5.*"
+    },
+    "suggest": {
+        "illuminate/cache": "Allows Eloquent queries to be cached for better performance"
+    },
+    "autoload": {
+        "psr-4": { "Ziadoz\\Silex\\Provider\\": ["src/", "tests/"] }
+    }
+}
