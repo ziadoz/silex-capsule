@@ -164,7 +164,7 @@ Alternatively, you can add it directly to your `composer.json` file:
 ````json
 {
     "require": {
-        "illuminte/events": "5.*"
+        "illuminate/events": "5.*"
     }
 }
 ````
