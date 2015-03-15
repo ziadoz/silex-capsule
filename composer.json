@@ -1,6 +1,6 @@
 {
     "name": "ziadoz/silex-capsule",
-    "description": "A Silex service provider for using Laravel's Eloquent ORM standlone",
+    "description": "A Laravel Eloquent ORM/Capsule service provider for Silex",
     "support": {
         "issues": "https://github.com/ziadoz/silex-capsule/issues",
         "source": "https://github.com/ziadoz/silex-capsule"
