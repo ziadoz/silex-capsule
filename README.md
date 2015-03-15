@@ -93,7 +93,7 @@ class Book extends Model
 }
 ````
 
-You can then use it, and all of its features, in your controllers just like you would in Laravel: 
+Then you can use it, and all of its features, in your controllers just like you would in Laravel: 
 
 ````php
 $app->get('/books', function(Application $app) {
@@ -156,7 +156,7 @@ $app->register(new Ziadoz\Silex\Provider\CapsuleServiceProvider, [
 If you want to use caching you'll need to install the Laravel Events package, which you can do using Composer: 
 
 ````
-composer require illuminte/events:5.*
+composer require illuminate/events:5.*
 ````
 
 Alternatively, you can add it directly to your `composer.json` file: 
@@ -169,13 +169,15 @@ Alternatively, you can add it directly to your `composer.json` file:
 }
 ````
     
-If you've enabled query logging on your connection, you can retrieve the log through Capsule: 
+If you've enabled query logging on your connection you can retrieve it through Capsule: 
 
 ````php
 Capsule::connection($name)->getQueryLog();
 ````
 
-You can also use Eloquent's schema building tools, for example to build migrations: 
+You can toggling query logging on a per-connection basis using the `logging` option in your connection credentials.
+
+You can also use Eloquent's schema building tools to build migrations: 
 
 ````php
 $app['capsule']->schema()->create('books', function($table) {
@@ -186,9 +188,9 @@ $app['capsule']->schema()->create('books', function($table) {
 });
 ````
 
-## Options Example
+## Capsule Options Example
 
-The following is an example of all the available options that you can pass to the service provider: 
+The following is a full example of all the available options that you can pass to the service provider: 
 
 ````php
 <?php
