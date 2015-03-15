@@ -153,10 +153,10 @@ $app->register(new Ziadoz\Silex\Provider\CapsuleServiceProvider, [
 ]);
 ````
 
-If you want to use caching you'll need to install the Laravel Events package, which you can do using Composer: 
+If you want to use query caching you'll need to install the Laravel Cache package, which you can do using Composer: 
 
 ````
-composer require illuminate/events:5.*
+composer require illuminate/cache:5.*
 ````
 
 Alternatively, you can add it directly to your `composer.json` file: 
@@ -164,11 +164,11 @@ Alternatively, you can add it directly to your `composer.json` file:
 ````json
 {
     "require": {
-        "illuminate/events": "5.*"
+        "illuminate/cache": "5.*"
     }
 }
 ````
-    
+
 If you've enabled query logging on your connection you can retrieve it through Capsule: 
 
 ````php
@@ -186,6 +186,21 @@ $app['capsule']->schema()->create('books', function($table) {
     $table->string('author');
     $table->timestamps();
 });
+````
+
+By default the service provider installs the Laravel Events package, so you can also use model observers: 
+
+````php
+<?php
+class BookObserver 
+{
+    public function saving($model)
+    {
+        // Do something
+    }
+}
+
+Book:observer(new BookObserver());
 ````
 
 ## Capsule Options Example
