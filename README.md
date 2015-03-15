@@ -32,7 +32,7 @@ To use it in your application just register the service provider with Silex:
 <?php        
 $app = new Silex\Application;
 
-$app->register(new Ziadoz\Silex\Provider\CapsuleServiceProvider, array(
+$app->register(new Ziadoz\Silex\Provider\CapsuleServiceProvider, [
     'capsule.connection' => [
         'driver'    => 'mysql',
         'host'      => 'localhost',
@@ -44,7 +44,7 @@ $app->register(new Ziadoz\Silex\Provider\CapsuleServiceProvider, array(
         'prefix'    => '',
         'logging'   => true,
     ],
-));
+]);
 
     ````
 
@@ -118,7 +118,7 @@ You can setup multiple connections and even caching with the service provider; s
 <?php
 $app = new Silex\Application;
 
-$app->register(new Ziadoz\Silex\Provider\CapsuleServiceProvider, array(
+$app->register(new Ziadoz\Silex\Provider\CapsuleServiceProvider, [
     // Connections
     'capsule.connections' => [
         'default' => [
@@ -151,7 +151,7 @@ $app->register(new Ziadoz\Silex\Provider\CapsuleServiceProvider, array(
         'driver' => 'apc',
         'prefix' => 'laravel',
     ],
-));
+]);
 ````
 
 If you want to use caching you'll need to install the Laravel Events package, which you can do using Composer: 
