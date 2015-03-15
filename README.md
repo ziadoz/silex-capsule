@@ -45,8 +45,7 @@ $app->register(new Ziadoz\Silex\Provider\CapsuleServiceProvider, [
         'logging'   => true,
     ],
 ]);
-
-    ````
+````
 
 For more information about the available options you should refer to the [Capsule documentation](https://github.com/illuminate/database).
 
