@@ -111,7 +111,7 @@ $app->post('/book', function(Application $app, Request $request) {
 
 ## Advanced Usage
 
-You can setup multiple connections and even caching with the service provider; simply use the `capsule.connections` and `capsule.cache` options:
+You can setup multiple connections and even caching with the service provider; simply use the `capsule.connections` option:
 
 ````php
 <?php
@@ -144,29 +144,7 @@ $app->register(new Ziadoz\Silex\Provider\CapsuleServiceProvider, [
             'logging'   => true,
         ],
     ],
-
-    // Cache
-    'capsule.cache' => [
-        'driver' => 'apc',
-        'prefix' => 'laravel',
-    ],
 ]);
-````
-
-If you want to use query caching you'll need to install the Laravel Cache package, which you can do using Composer: 
-
-````
-composer require illuminate/cache:5.*
-````
-
-Alternatively, you can add it directly to your `composer.json` file: 
-
-````json
-{
-    "require": {
-        "illuminate/cache": "5.*"
-    }
-}
 ````
 
 If you've enabled query logging on your connection you can retrieve it through Capsule: 
@@ -254,32 +232,6 @@ $app->register(new Ziadoz\Silex\Provider\CapsuleServiceProvider, [
     ],
     */
 
-    // Cache
-    'capsule.cache' => [
-        'driver' => 'apc',
-        'prefix' => 'laravel',
-    ],
-    
-    /*
-    // Cache Options
-    'capsule.cache' => [
-        'driver'        => 'file',
-        'path'          => '/path/to/cache',
-        'connection'    => null,
-        'table'         => 'cache',
-
-        'memcached' => [
-            [
-                'host'      => '127.0.0.1',
-                'port'      => 11211,
-                'weight'    => 100
-            ],
-        ],
-
-        'prefix' => 'laravel',
-    ),
-    */
-    
     /*
     // Other Options
     'capsule.global'   => true, // Enable global access to Capsule query builder.

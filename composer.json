@@ -19,9 +19,6 @@
         "illuminate/database": "5.0",
         "illuminate/events": "5.*"
     },
-    "suggest": {
-        "illuminate/cache": "Allows Eloquent queries to be cached for better performance"
-    },
     "autoload": {
         "psr-4": { "Ziadoz\\Silex\\Provider\\": ["src/", "tests/"] }
     }

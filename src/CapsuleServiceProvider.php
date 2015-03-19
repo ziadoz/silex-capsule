@@ -6,7 +6,6 @@ use Silex\ServiceProviderInterface;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Container\Container;
-use Illuminate\Cache\CacheManager;
 
 class CapsuleServiceProvider implements ServiceProviderInterface
 {
@@ -41,23 +40,9 @@ class CapsuleServiceProvider implements ServiceProviderInterface
             return new Dispatcher($app['capsule.container']);
         });
 
-        if (class_exists('Illuminate\Cache\CacheManager')) {
-            $app['capsule.cache_manager'] = $app->share(function() use($app) {
-                return new CacheManager($app['capsule.container']);
-            });
-        }
-
         $app['capsule'] = $app->share(function($app) {
             $capsule = new Capsule($app['capsule.container']);
             $capsule->setEventDispatcher($app['capsule.dispatcher']);
-
-            if (isset($app['capsule.cache_manager']) && isset($app['capsule.cache'])) {
-                $capsule->setCacheManager($app['capsule.cache_manager']);
-
-                foreach ($app['capsule.cache'] as $key => $value) {
-                    $app['capsule.container']->offsetGet('config')->offsetSet('cache.' . $key, $value);
-                }
-            }
 
             if ($app['capsule.global']) {
                 $capsule->setAsGlobal();
