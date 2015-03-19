@@ -20,6 +20,6 @@
         "illuminate/events": "5.*"
     },
     "autoload": {
-        "psr-4": { "Ziadoz\\Silex\\Provider\\": ["src/", "tests/"] }
+        "psr-4": { "Ziadoz\\Silex\\Provider\\": "src/" }
     }
 }
