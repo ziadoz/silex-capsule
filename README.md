@@ -11,7 +11,7 @@ In order to use the service provider you'll need to be running **PHP 5.4+**
 The best way to install the service provider is using [Composer](https://getcomposer.org):
 
 ````shell
-composer require ziadoz/silex-capsule:1.0
+composer require ziadoz/silex-capsule:1.*
 ````
 
 Alternatively, you can add it directly to your `composer.json` file: 
@@ -19,7 +19,7 @@ Alternatively, you can add it directly to your `composer.json` file:
 ````json
 {
     "require": {
-        "ziadoz/silex-capsule": "1.0"
+        "ziadoz/silex-capsule": "1.*"
     }
 }
 ````
