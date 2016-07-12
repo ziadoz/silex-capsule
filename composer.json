@@ -14,8 +14,9 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0",
-        "silex/silex": "~1.2",
+        "php": ">=5.5.9",
+        "silex/silex": "~2.0",
+        "pimple/pimple": "~3.0",
         "illuminate/database": "~5.0",
         "illuminate/events": "~5.0"
     },
