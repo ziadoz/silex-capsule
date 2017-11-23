@@ -21,7 +21,7 @@ Alternatively, you can add it directly to your `composer.json` file:
 ````json
 {
     "require": {
-        "ziadoz/silex-capsule": "1.*"
+        "ziadoz/silex-capsule": "2.*"
     }
 }
 ````
