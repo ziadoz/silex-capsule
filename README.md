@@ -1,4 +1,4 @@
-# Silex Capsule Service Provider 
+# Silex Capsule Service Provider
 
 [![Build Status](https://travis-ci.org/ziadoz/silex-capsule.svg?branch=master)](https://travis-ci.org/ziadoz/silex-capsule)
 
@@ -6,7 +6,7 @@ This is a service provider for the [Silex Micro Framework](http://silex.sensiola
 
 ## Requirements
 
-In order to use the service provider you'll need to be running **PHP 5.4+**
+In order to use the service provider you'll need to be running **PHP 5.5.9+**
 
 ## Installation
 
@@ -16,7 +16,7 @@ The best way to install the service provider is using [Composer](https://getcomp
 composer require ziadoz/silex-capsule:1.*
 ````
 
-Alternatively, you can add it directly to your `composer.json` file: 
+Alternatively, you can add it directly to your `composer.json` file:
 
 ````json
 {
@@ -28,10 +28,10 @@ Alternatively, you can add it directly to your `composer.json` file:
 
 ## Basic Usage
 
-To use it in your application just register the service provider with Silex: 
+To use it in your application just register the service provider with Silex:
 
 ````php
-<?php        
+<?php
 $app = new Silex\Application;
 
 $app->register(new Ziadoz\Silex\Provider\CapsuleServiceProvider, [
@@ -53,10 +53,10 @@ For more information about the available options you should refer to the [Capsul
 
 Once you've registered the service provider a Capsule object will be created and Eloquent booted up before any of your route controllers are called. If you're interested in the technical aspects, Capsule is registered as `before` middleware with Silex using `Application::EARLY_EVENT`, so it'll only ever be made available once your application is run and before anything else happens.
 
-If you need Capsule and Eloquent to be booted up before your application is run (`$app->run()`), for example in a Symfony Console command, you just need to access its array element within the dependency injection container: 
+If you need Capsule and Eloquent to be booted up before your application is run (`$app->run()`), for example in a Symfony Console command, you just need to access its array element within the dependency injection container:
 
 ````php
-$app['capsule']; 
+$app['capsule'];
 ````
 
 Capsule will be made available globally by default, allowing you to write queries directly in your controllers should you wish:
@@ -72,7 +72,7 @@ $app->get('/book/{id}', function(Application $app, $id) {
 
 If you don't want Capsule to be booted then set the `capsule.global` setting to `false`. If you don't plan to use Eloquent to build models then you can also prevent it from being booted by setting `capsule.eloquent` to `false`.
 
-Creating Eloquent models is identical to how you would create them in Laravel: 
+Creating Eloquent models is identical to how you would create them in Laravel:
 
 ````php
 use Illuminate\Database\Eloquent\Model;
@@ -82,7 +82,7 @@ class Book extends Model
     protected $table = 'books';
 
     protected $fillable = [
-        'title', 
+        'title',
         'author',
     ];
 
@@ -95,7 +95,7 @@ class Book extends Model
 }
 ````
 
-Then you can use it, and all of its features, in your controllers just like you would in Laravel: 
+Then you can use it, and all of its features, in your controllers just like you would in Laravel:
 
 ````php
 $app->get('/books', function(Application $app) {
@@ -149,7 +149,7 @@ $app->register(new Ziadoz\Silex\Provider\CapsuleServiceProvider, [
 ]);
 ````
 
-If you've enabled query logging on your connection you can retrieve it through Capsule: 
+If you've enabled query logging on your connection you can retrieve it through Capsule:
 
 ````php
 Capsule::connection($name)->getQueryLog();
@@ -157,7 +157,7 @@ Capsule::connection($name)->getQueryLog();
 
 You can toggling query logging on a per-connection basis using the `logging` option in your connection credentials.
 
-You can also use Eloquent's schema building tools to build migrations: 
+You can also use Eloquent's schema building tools to build migrations:
 
 ````php
 $app['capsule']->schema()->create('books', function($table) {
@@ -168,11 +168,11 @@ $app['capsule']->schema()->create('books', function($table) {
 });
 ````
 
-By default the service provider installs the Laravel Events package, so you can also use model observers: 
+By default the service provider installs the Laravel Events package, so you can also use model observers:
 
 ````php
 <?php
-class BookObserver 
+class BookObserver
 {
     public function saving($model)
     {
@@ -185,7 +185,7 @@ Book:observe(new BookObserver());
 
 ## Capsule Options Example
 
-The following is a full example of all the available options that you can pass to the service provider: 
+The following is a full example of all the available options that you can pass to the service provider:
 
 ````php
 <?php
@@ -244,6 +244,6 @@ $app->register(new Ziadoz\Silex\Provider\CapsuleServiceProvider, [
 
 ## Testing
 
-There are some basic tests to ensure that the Capsule object is correctly registered with Silex. You can run them using [PHPUnit](https://phpunit.de/), and you'll also need SQLite as the tests use a simple in-memory database. 
+There are some basic tests to ensure that the Capsule object is correctly registered with Silex. You can run them using [PHPUnit](https://phpunit.de/), and you'll also need SQLite as the tests use a simple in-memory database.
 
 If you make a pull request please ensure you add the accompanying tests.
