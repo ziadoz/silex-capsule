@@ -1,21 +1,24 @@
 <?php
 namespace Ziadoz\Silex\Provider;
 
+
 use Silex\Application;
-use Silex\ServiceProviderInterface;
+use Silex\Api\BootableProviderInterface;
+use Pimple\Container as PimpleContainer;
+use Pimple\ServiceProviderInterface;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Container\Container;
 
-class CapsuleServiceProvider implements ServiceProviderInterface
+class CapsuleServiceProvider implements ServiceProviderInterface, BootableProviderInterface
 {
     /**
      * Register the Capsule service.
      *
-     * @param Silex\Application $app
+     * @param \Pimple\Container $app
      * @return void
      **/
-    public function register(Application $app)
+    public function register(PimpleContainer $app)
     {
         $app['capsule.connection_defaults'] = [
             'driver'    => 'mysql',
@@ -32,15 +35,15 @@ class CapsuleServiceProvider implements ServiceProviderInterface
         $app['capsule.global']   = true;
         $app['capsule.eloquent'] = true;
 
-        $app['capsule.container'] = $app->share(function() {
+        $app['capsule.container'] = function() {
             return new Container;
-        });
+        };
 
-        $app['capsule.dispatcher'] = $app->share(function() use($app) {
+        $app['capsule.dispatcher'] = function() use($app) {
             return new Dispatcher($app['capsule.container']);
-        });
+        };
 
-        $app['capsule'] = $app->share(function($app) {
+        $app['capsule'] = function($app) {
             $capsule = new Capsule($app['capsule.container']);
             $capsule->setEventDispatcher($app['capsule.dispatcher']);
 
@@ -73,13 +76,13 @@ class CapsuleServiceProvider implements ServiceProviderInterface
             }
 
             return $capsule;
-        });
+        };
     }
 
     /**
      * Boot the Capsule service.
      *
-     * @param Silex\Application $app
+     * @param \Silex\Application $app
      * @return void
      **/
     public function boot(Application $app)

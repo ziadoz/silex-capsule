@@ -67,7 +67,7 @@ class CapsuleServiceProviderTest extends \PHPUnit_Framework_TestCase
     {
         $books = Capsule::table('books')->get();
         $this->assertEquals(count($books), 5);
-        $this->assertEquals($books[0]['author'], 'Terry Pratchett');
+        $this->assertEquals($books[0]->author, 'Terry Pratchett');
     }
 
     /**
