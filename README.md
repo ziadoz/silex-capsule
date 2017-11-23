@@ -1,4 +1,6 @@
-# Silex Capsule Service Provider
+# Silex Capsule Service Provider 
+
+[![Build Status](https://travis-ci.org/ziadoz/silex-capsule.svg?branch=master)](https://travis-ci.org/ziadoz/silex-capsule)
 
 This is a service provider for the [Silex Micro Framework](http://silex.sensiolabs.org/) that integrates [Laravel's Eloquent ORM](http://laravel.com/docs/5.0/eloquent) via [Capsule](https://github.com/illuminate/database), its standalone wrapper implementation.
 
