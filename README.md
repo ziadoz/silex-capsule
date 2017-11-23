@@ -13,7 +13,7 @@ In order to use the service provider you'll need to be running **PHP 5.5.9+**
 The best way to install the service provider is using [Composer](https://getcomposer.org):
 
 ````shell
-composer require ziadoz/silex-capsule:1.*
+composer require ziadoz/silex-capsule:2.*
 ````
 
 Alternatively, you can add it directly to your `composer.json` file:
